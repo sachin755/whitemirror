@@ -1,0 +1,8 @@
+# increase counter by 1
+(( counter+=10 ))
+[ $counter -eq 110 ] && break
+# delay it a specified amount of time i.e 1 sec
+sleep 0.10
+done
+) |
+dialog --title "File Copy" --gauge "Please wait" 7 70 

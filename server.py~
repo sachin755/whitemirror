@@ -1,0 +1,27 @@
+#!/usr/bin/python
+
+import socket
+import subprocess
+
+s = socket.socket()
+host = "127.0.0.1"
+
+port = 18
+
+s.bind((host,port))
+
+s.listen(5)
+
+while True:
+	c, addr = s.accept()
+	print 'Got permission'
+	subprocess.call('who > data',shell = True)
+	f = open('data')
+	
+	a = f.readlines()
+	content = a[0]
+	c.send(content)
+	c.close()
+	
+s.close()
+
